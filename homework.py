@@ -133,13 +133,13 @@ def read_package(workout_type: str, data: list) -> Training:
         'RUN': Running,
         'WLK': SportsWalking}
     if workout_type not in (training_dict.keys()):
-        raise ValueError('Задан не существующий тип тренировки')        
+        raise ValueError('Задан не существующий тип тренировки')
     return training_dict[workout_type](*data)
 
 
 def main(training: Training) -> None:
     """Главная функция."""
-    info: Type[InfoMessage] = training.show_training_info()
+    info: InfoMessage = training.show_training_info()
     print(InfoMessage.get_message(info))
 
 
