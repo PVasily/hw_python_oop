@@ -1,22 +1,17 @@
 from dataclasses import asdict, dataclass
-from typing import Any, Type
+from typing import Type
 
 
 @dataclass
 class InfoMessage:
     """Информационное сообщение о тренировке."""
 
-    training_type: Any
+    training_type: str
     duration: float
     distance: float
     speed: float
     calories: float
 
-    TYPE_OF_TRAINING: str = 'Тип тренировки:'
-    DURATION_OF_TRAINING: str = 'Длительность:'
-    DISTANCE: str = 'Дистанция:'
-    MEAN_SPEED: str = 'Ср. скорость:'
-    SPENT_CALORIES: str = 'Потрачено ккал:'
     MESSAGE = ('Тип тренировки: {training_type}; '
                'Длительность: {duration:.3f} ч.; '
                'Дистанция: {distance:.3f} км; '
@@ -142,7 +137,7 @@ def read_package(workout_type: str, data: list) -> Training:
 def main(training: Training) -> None:
     """Главная функция."""
     info: InfoMessage = training.show_training_info()
-    print(InfoMessage.get_message(info))
+    print(info.get_message())
 
 
 if __name__ == '__main__':
